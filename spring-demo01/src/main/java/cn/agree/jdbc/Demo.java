@@ -5,7 +5,11 @@ import java.sql.*;
 public class Demo {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         //1 注册驱动
+        // 最早的时候使用 new一个数据库驱动
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+        // 后来我们使用class.forname字符串的方式 因为Driver里面已经有一个静态代码块去注册了.
+        Class.forName("com.mysql.jdbc.Driver");
+
         // Class<?> driver = Class.forName("driver");
 
         //2 获取连接
