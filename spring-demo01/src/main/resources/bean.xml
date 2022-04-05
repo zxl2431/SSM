@@ -9,7 +9,8 @@
         class属性:指定要创建对象的全限定类名
     -->
     <!--配置service-->
-    <bean id="accountService" class="cn.agree.service.impl.AccountServiceImpl"></bean>
+    <bean id="accountService" class="cn.agree.service.impl.AccountServiceImpl"
+          scope="singleton" init-method="init" destroy-method="destory"></bean>
     <!--配置dao-->
     <bean id="accountDao" class="cn.agree.dao.impl.AccountDaoImpl"></bean>
 </beans>
