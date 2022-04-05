@@ -8,12 +8,14 @@ import cn.agree.service.AccountService;
 public class AccountServiceImpl implements AccountService {
 
     // private AccountDao accountDao = new AccountDaoImpl();
-    AccountDao accountDao = (AccountDao) BeanFactory.getBean("accountDao");
+    private  AccountDao accountDao = (AccountDao) BeanFactory.getBean("accountDao");
 
 
     @Override
     public void saveAccount() {
+
         System.out.println("service层保存账户..."+accountDao);
+        // BeanFactory.printBean();
         accountDao.saveAccount();
     }
 

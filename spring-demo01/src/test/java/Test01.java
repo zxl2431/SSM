@@ -8,10 +8,10 @@ public class Test01 {
         test01();
         // AccountService accountService = new AccountServiceImpl();
         AccountService accountService = (AccountService) BeanFactory.getBean("accountService");
-        AccountDao accountDao = (AccountDao) BeanFactory.getBean("accountDao");
+        // AccountDao accountDao = (AccountDao) BeanFactory.getBean("accountDao");
 
-        // accountService.saveAccount();
-        accountDao.saveAccount();
+        accountService.saveAccount();
+        // accountDao.saveAccount();
 
 
     }
