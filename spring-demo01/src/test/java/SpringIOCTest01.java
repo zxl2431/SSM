@@ -1,5 +1,6 @@
 import cn.agree.dao.AccountDao;
 import cn.agree.service.AccountService;
+import cn.agree.service.impl.GathService;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -55,6 +56,8 @@ public class SpringIOCTest01 {
         System.out.println(accountService);
         AccountDao accountDao = (AccountDao) ac.getBean("accountDao");
         System.out.println(accountDao);
+        GathService gathService = (GathService) ac.getBean("gathService");
+        System.out.println(gathService);
     }
 
 }

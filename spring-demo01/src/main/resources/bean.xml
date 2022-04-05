@@ -43,4 +43,47 @@
         <property name="age" value="21"></property>
         <property name="birthday" ref="date"></property>
     </bean>
+
+    <bean id="gathService" class="cn.agree.service.impl.GathService">
+        <!--在注入集合数据时, 只要结构相同,标签可以互换-->
+        <!--给数组注入数据-->
+        <property name="myStrs">
+            <set>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>CCC</value>
+            </set>
+        </property>
+        <!-- 注入list集合数据-->
+        <property name="myList">
+            <array>
+                <value>hello</value>
+                <value>world</value>
+            </array>
+        </property>
+        <!--注入set集合数据-->
+        <property name="mySet">
+            <list>
+                <value>nihao</value>
+                <value>xiaohong</value>
+            </list>
+        </property>
+        <!--注入map数据-->
+        <property name="myMap">
+            <props>
+                <prop key="testA">xxx</prop>
+                <prop key="testB">海大南门</prop>
+            </props>
+        </property>
+        <!-- 注入properties数据 -->
+        <property name="myProps">
+            <map>
+                <entry key="testA" value="zzz"></entry>
+                <entry key="testB">
+                    <value>yyy</value>
+                </entry>
+            </map>
+        </property>
+
+    </bean>
 </beans>
