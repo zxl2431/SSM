@@ -5,16 +5,41 @@ import cn.agree.dao.impl.AccountDaoImpl;
 import cn.agree.factory.BeanFactory;
 import cn.agree.service.AccountService;
 
+import java.util.Date;
+
 public class AccountServiceImpl implements AccountService {
 
-    // private AccountDao accountDao = new AccountDaoImpl();
-    // private  AccountDao accountDao = (AccountDao) BeanFactory.getBean("accountDao");
+    private String name;
+    private Integer age;
+    private Date birthday;
 
     /*
-    *  无参构造方法
-    * */
+     *  无参构造方法
+     * */
     public AccountServiceImpl() {
         System.out.println("创建AccountServiceImpl...");
+    }
+
+    /*
+    *  有参构造
+    *
+    * */
+    public AccountServiceImpl(String name, Integer age, Date birthday) {
+        this.name = name;
+        this.age = age;
+        this.birthday = birthday;
+    }
+
+    public AccountServiceImpl(String name, String age) {
+    }
+
+    @Override
+    public String toString() {
+        return "AccountServiceImpl{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", birthday=" + birthday +
+                '}';
     }
 
     /*

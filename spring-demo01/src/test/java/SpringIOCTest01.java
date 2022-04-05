@@ -46,8 +46,15 @@ public class SpringIOCTest01 {
 
         // 获取实例 此时才会创建bean
         AccountService accountService = (AccountService) beanFactory.getBean("accountService");
+    }
 
-
+    @Test
+    public void testBeanAttribute() {
+        ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
+        AccountService accountService = (AccountService) ac.getBean("accountService");
+        System.out.println(accountService);
+        AccountDao accountDao = (AccountDao) ac.getBean("accountDao");
+        System.out.println(accountDao);
     }
 
 }
