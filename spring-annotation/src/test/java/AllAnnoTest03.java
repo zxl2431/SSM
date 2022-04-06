@@ -1,3 +1,4 @@
+import cn.agree.config.SpringConfiguration;
 import cn.agree.pojo.Account;
 import cn.agree.service.AccountService;
 import org.junit.Test;
@@ -9,7 +10,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:bean.xml"})
+// @ContextConfiguration(locations = {"classpath:bean.xml"})
+@ContextConfiguration(classes = SpringConfiguration.class)
 public class AllAnnoTest03 {
 
     @Autowired
