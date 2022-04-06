@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="dynamicProxy" />
         <module name="spring-annotation" />
         <module name="spring-aop" />
         <module name="spring-demo01" />
@@ -13,6 +14,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dynamicProxy" target="1.8" />
       <module name="spring-annotation" target="1.8" />
       <module name="spring-aop" target="1.8" />
       <module name="spring-demo01" target="1.8" />
