@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 配置service -->
+    <bean id="accountService" class="cn.agree.service.impl.AccountServiceImpl"></bean>
+
+    <!--配置通知类 -->
+    <bean id="logger" class="cn.agree.log.Logger"></bean>
+
+    <!--
+	aop的配置步骤：
+		第一步：把通知类的创建也交给spring来管理
+		第二步：使用aop:config标签开始aop的配置
+		第三步：使用aop:aspect标签开始配置切面，写在aop:config标签内部
+				id属性：给切面提供一个唯一标识
+				ref属性：用于引用通知bean的id。
+		第四步：使用对应的标签在aop:aspect标签内部配置通知的类型
+				使用aop:befored标签配置前置通知，写在aop:aspect标签内部
+					method属性：用于指定通知类中哪个方法是前置通知
+					pointcut属性：用于指定切入点表达式。
+				切入点表达式写法：
+					关键字：execution(表达式)
+				表达式内容：
+					全匹配标准写法：
+						访问修饰符   返回值   包名.包名.包名...类名.方法名(参数列表)
+					例如：
+					public void com.itheima.service.impl.AccountServiceImpl.saveAccount()
+	-->
+    <!-- 配置aop-->
+    <aop:config>
+        <!-- -->
+        <aop:pointcut id="pt1" expression="execution(* cn.agree.service.impl.*.*(..))" />
+        <!--配置切面-->
+        <aop:aspect id="logAdvice" ref="logger">
+            <!--配置前置通知-->
+            <!--<aop:before method="printLog" pointcut-ref="pt1"/>-->
+            <!--配置后置通知-->
+            <aop:after method="printLog" pointcut-ref="pt1" />
+            <!--环绕通知还稍微有点复杂-->
+            <!--<aop:around method="printLog" pointcut-ref="pt1"/>-->
+        </aop:aspect>
+    </aop:config>
+</beans>

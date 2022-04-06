@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/dynamicProxy/dynamicProxy.iml" filepath="$PROJECT_DIR$/dynamicProxy/dynamicProxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-annotation/spring-annotation.iml" filepath="$PROJECT_DIR$/spring-annotation/spring-annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-aop/spring-aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-aop-annotation/spring-aop-annotation.iml" filepath="$PROJECT_DIR$/spring-aop-annotation/spring-aop-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-aop-demo01/spring-aop-demo01.iml" filepath="$PROJECT_DIR$/spring-aop-demo01/spring-aop-demo01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-demo01/spring-demo01.iml" filepath="$PROJECT_DIR$/spring-demo01/spring-demo01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-demo02/spring-demo02.iml" filepath="$PROJECT_DIR$/spring-demo02/spring-demo02.iml" />
     </modules>
