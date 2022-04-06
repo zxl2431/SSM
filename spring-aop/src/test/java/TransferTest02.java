@@ -1,4 +1,3 @@
-import cn.agree.dao.AccountDao;
 import cn.agree.pojo.Account;
 import cn.agree.service.AccountService;
 import org.junit.Before;
@@ -8,18 +7,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
-public class TransferTest01 {
+public class TransferTest02 {
 
-    private AccountService accountService;
-    private AccountDao accountDao;
+    private  AccountService accountService;
 
     @Before
     public void init() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("bean1.xml");
         accountService = (AccountService) ac.getBean("accountService");
-        accountDao = (AccountDao) ac.getBean("accountDao");
     }
-
 
     @Test
     public void findAll() {
@@ -27,29 +23,12 @@ public class TransferTest01 {
         System.out.println(accounts);
     }
 
-    @Test
-    public void updateAccount() {
-        Account account = new Account();
-
-        accountService.updateAccount(account);
-    }
-
     /*
-    *
-    * */
-    @Test
-    public void findByName() {
-        Account account = accountDao.findByName("张三");
-        System.out.println(account);
-    }
-
-    /*
-    *  测试一下转账
-    *
-    * */
+     *  测试一下转账
+     *
+     * */
     @Test
     public void transfer() {
         accountService.transfer("李四", "张三", 10);
     }
-
 }

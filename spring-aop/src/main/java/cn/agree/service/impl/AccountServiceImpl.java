@@ -54,6 +54,7 @@ public class AccountServiceImpl implements AccountService {
         target.setBalance(target.getBalance()+money);
         // 更新两个账户
         accountDao.updateAccount(source);
+        int i = 1/0; // 模拟转账异常
         accountDao.updateAccount(target);
     }
 }

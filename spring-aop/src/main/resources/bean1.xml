@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountService" class="cn.agree.service.impl.AccountServiceImpl2">
+        <property name="accountDao" ref="accountDao"></property>
+        <!--注入事务管理器-->
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <bean id="accountDao" class="cn.agree.dao.impl.AccountDaoImpl">
+        <property name="runner" ref="runner"/>
+        <!--注入获取连接-->
+        <property name="connectionUtil" ref="connectionUtil" />
+    </bean>
+
+    <bean id="txManager" class="cn.agree.manager.TransactionManager">
+        <property name="connectionUtil" ref="connectionUtil" />
+    </bean>
+
+    <bean id="connectionUtil" class="cn.agree.utils.ConnectionUtil">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="singleton">
+        <constructor-arg name="ds" ref="dataSource"></constructor-arg>
+    </bean>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/db1" />
+        <property name="user" value="root" />
+        <property name="password" value="root" />
+    </bean>
+
+</beans>
