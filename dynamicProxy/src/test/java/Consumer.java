@@ -7,7 +7,7 @@ import java.lang.reflect.Proxy;
 
 public class Consumer {
     public static void main(String[] args) {
-        final Producer producer = new Producer();
+        Producer producer = new Producer();
 
         // producer.saleProduct(1000f);
         // producer.afterService(500f);
