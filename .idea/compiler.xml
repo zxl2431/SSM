@@ -13,6 +13,7 @@
         <module name="spring-aop-demo01" />
         <module name="spring-demo01" />
         <module name="spring-demo02" />
+        <module name="spring-jdbctemplate-xml" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,6 +24,7 @@
       <module name="spring-aop-demo01" target="1.8" />
       <module name="spring-demo01" target="1.8" />
       <module name="spring-demo02" target="1.8" />
+      <module name="spring-jdbctemplate-xml" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

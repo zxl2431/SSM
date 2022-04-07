@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置C3P0数据源 -->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/db1"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>-->
+
+    <!-- 配置DBCP数据源 -->
+   <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="dbc:mysql://127.0.0.1:3306/db1"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>-->
+
+    <!-- 配置Spring内置数据源 在spring-jdbc-5.0.2.Release中-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/db1"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+    <!-- 配置一个数据库操作模板 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 引入外部的属性文件 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="jdbc.properties" />
+    </bean>
+
+    <!-- 配置一个dao -->
+    <bean id="accountDao" class="cn.agree.dao.impl.AccountDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!-- 配置一个不需要jdbcTemplate的dao 因为用了spring的JdbcDaoSupport -->
+    <bean id="accountDao2" class="cn.agree.dao.impl.AccountDaoImpl2">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置一个service -->
+    <bean id="accountService" class="cn.agree.service.impl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao"></property>
+    </bean>
+
+    <!--===========================基于AOP实现事务管理(声明式事务管理)================================-->
+
+    <!-- 第一步: 配置一个事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入DataSource -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 第二步: 配置事务的通知引用事务管理器 -->
+    <!-- 事务的配置 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--
+            配置事务的属性
+            指定方法名称：是业务核心方法
+		read-only：是否是只读事务。默认false，不只读。
+		isolation：指定事务的隔离级别。默认值是使用数据库的默认隔离级别。
+		propagation：指定事务的传播行为。
+		timeout：指定超时时间。默认值为：-1。永不超时。
+		rollback-for：用于指定一个异常，当执行产生该异常时，事务回滚。产生其他异常，事务不回滚。没有默认值，任何异常都回滚。
+		no-rollback-for：用于指定一个异常，当产生该异常时，事务不回滚，产生其他异常时，事务回滚。没有默认值，任何异常都回滚
+         -->
+        <tx:attributes>
+            <tx:method name="trans*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 指定哪些方法参与事务 -->
+    <aop:config>
+        <!-- 指定切点 -->
+        <aop:pointcut id="transPointCut" expression="execution(* cn.agree.service.impl.*.*(..))"/>
+        <!-- 通知配置 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="transPointCut" />
+    </aop:config>
+
+
+
+</beans>

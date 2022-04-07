@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/dynamicProxy/pom.xml" />
         <option value="$PROJECT_DIR$/spring-aop-demo01/pom.xml" />
         <option value="$PROJECT_DIR$/spring-aop-annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-jdbctemplate-xml/pom.xml" />
       </list>
     </option>
   </component>
