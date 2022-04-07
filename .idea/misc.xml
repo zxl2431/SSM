@@ -12,7 +12,13 @@
         <option value="$PROJECT_DIR$/spring-jdbctemplate-xml/pom.xml" />
         <option value="$PROJECT_DIR$/spring-tx-annotation/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis-demo01/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis-demo01-custom/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/mybatis-demo02-custom/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager">
