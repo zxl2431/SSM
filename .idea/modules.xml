@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/dynamicProxy/dynamicProxy.iml" filepath="$PROJECT_DIR$/dynamicProxy/dynamicProxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-demo01/mybatis-demo01.iml" filepath="$PROJECT_DIR$/mybatis-demo01/mybatis-demo01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-annotation/spring-annotation.iml" filepath="$PROJECT_DIR$/spring-annotation/spring-annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-aop/spring-aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop-annotation/spring-aop-annotation.iml" filepath="$PROJECT_DIR$/spring-aop-annotation/spring-aop-annotation.iml" />
