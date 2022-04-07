@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-demo01/spring-demo01.iml" filepath="$PROJECT_DIR$/spring-demo01/spring-demo01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-demo02/spring-demo02.iml" filepath="$PROJECT_DIR$/spring-demo02/spring-demo02.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-jdbctemplate-xml/spring-jdbctemplate-xml.iml" filepath="$PROJECT_DIR$/spring-jdbctemplate-xml/spring-jdbctemplate-xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-tx-annotation/spring-tx-annotation.iml" filepath="$PROJECT_DIR$/spring-tx-annotation/spring-tx-annotation.iml" />
     </modules>
   </component>
 </project>
