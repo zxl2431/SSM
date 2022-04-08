@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+    <select id="findByUserId" parameterType="java.lang.Integer" resultType="cn.agree.domain.User">
+        select * from USER where id = #{id}
+    </select>
+
+    <select id="findUserByUsername" parameterType="java.lang.String" resultType="cn.agree.domain.User">
+        select * from user where username LIKE '${value}'
+    </select>
+
+    <insert id="saveUser" parameterType="cn.agree.domain.User">
+        <selectKey keyColumn="id" keyProperty="id" resultType="java.lang.Integer" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO user(username,birthday,sex,address)VALUES(#{username},#{birthday},#{sex},#{address})
+    </insert>
+</mapper>
