@@ -1,10 +1,13 @@
 package cn.agree.session;
 
+import cn.agree.session.mapper.Mapper;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
 *  Configuration对象
@@ -25,6 +28,17 @@ public class Configuration {
     // 创建数据源
     private ComboPooledDataSource dataSource = new ComboPooledDataSource();
 
+    // 存储所有SQL语句和返回值全限定名
+    private Map<String, Mapper> mappers = new HashMap<String, Mapper>();
+
+    public Map<String, Mapper> getMappers() {
+        return mappers;
+    }
+
+    // 这里set方法为了保证每次填充进来的数据不被覆盖, 用putAll方法
+    public void setMappers(Map<String, Mapper> mappers) {
+        this.mappers.putAll(mappers);
+    }
 
     public void setDataSource(ComboPooledDataSource dataSource) {
         this.dataSource = dataSource;
@@ -98,6 +112,8 @@ public class Configuration {
                 ", password='" + password + '\'' +
                 ", url='" + url + '\'' +
                 ", driver='" + driver + '\'' +
+                ", dataSource=" + dataSource +
+                ", mappers=" + mappers +
                 '}';
     }
 }

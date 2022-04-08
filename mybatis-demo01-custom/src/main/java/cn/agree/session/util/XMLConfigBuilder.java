@@ -53,12 +53,24 @@ public class XMLConfigBuilder {
                 }else if (name.equals("password")) {
                     cfg.setPassword(value);
                 }
+            }
 
 
+            // System.out.println("configuration对象获取的连接池:"+cfg.getConnection());
+
+            // 接着解析sqlMapConfig中的<mapper resource="cn/agree/mapper/UserMapper.xml"/>
+            List<Element> mapperList = document.selectNodes("//mappers//mapper");
+            for (Element element : mapperList) {
+                // 获取需要解析的XML路径
+                String resource = element.attributeValue("resource");
+                Map<String, Mapper> mappers = loadMapper(resource);
+
+                // 将mappers存放到Configuration中
+                cfg.setMappers(mappers);
             }
 
             System.out.println("组装的configuration对象:"+ cfg);
-            System.out.println("configuration对象获取的连接池:"+cfg.getConnection());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,7 +115,7 @@ public class XMLConfigBuilder {
                 String resulteType = element.attributeValue("resultType");
                 // 获取SQL
                 String sql = element.getText();
-                System.out.println("loadMapper解析的结果:"+id+"---"+resulteType+"---"+sql);
+                // System.out.println("loadMapper解析的结果:"+id+"---"+resulteType+"---"+sql);
 
                 // 构建Mapper对象
                 Mapper mapper = new Mapper(sql, resulteType);
