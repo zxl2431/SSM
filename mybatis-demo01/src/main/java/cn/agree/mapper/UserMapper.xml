@@ -45,4 +45,22 @@
       SELECT * FROM user WHERE username LIKE '${value}'
     </select>
 
+    <!-- parameterType 和resultMap学习  -->
+    <resultMap id="UserResultMap" type="cn.agree.domain.User">
+        <id column="id_" property="id" />
+        <result column="username_" property="username" />
+        <result column="birthday_" property="birthday" />
+        <result column="sex_" property="sex" />
+        <result column="address_" property="address" />
+    </resultMap>
+
+    <select id="findByVo" parameterType="cn.agree.domain.QueryVo" resultMap="UserResultMap">
+        SELECT id id_, username username_, birthday birthday_, sex sex_, address address_ FROM user WHERE username = #{user.username}
+    </select>
+
+    <!--resultType学习-->
+    <select id="findUserCount" resultType="java.lang.Integer">
+        SELECT count(*) FROM user;
+    </select>
+
 </mapper>
