@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <mapper namespace="cn.agree.mapper.UserMapper">
+    <!-- findAll-->
     <select id="findAll" resultType="cn.agree.domain.User">
         SELECT * from user
     </select>
+
+    <!-- findOne -->
+    <select id="findOne" resultType="cn.agree.domain.User">
+        select * from user where id=1
+    </select>
+
 </mapper>

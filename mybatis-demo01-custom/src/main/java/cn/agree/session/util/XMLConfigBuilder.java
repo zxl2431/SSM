@@ -2,13 +2,16 @@ package cn.agree.session.util;
 
 import cn.agree.io.Resources;
 import cn.agree.session.Configuration;
+import cn.agree.session.mapper.Mapper;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*
 *  解析SqlMapConfig.xml文件
@@ -66,8 +69,17 @@ public class XMLConfigBuilder {
     *  提取SQL语句和返回JavaBean全限定名
     *
     * */
-    public static void loadMapper(String path) {
+    public static Map<String, Mapper> loadMapper(String path) {
         try {
+
+            /*
+            *  定义一个Map<String, Mapper> mappers
+            *  key用namespace+id的方式保证唯一性
+            *  value用来存放sql和执行Sql的结果
+            *
+            * */
+            Map<String, Mapper> mappers = new HashMap<String, Mapper>();
+
             InputStream is = Resources.getResourceAsStream(path);
 
             // 创建SAXReader对象,加载文件字节输入流
@@ -92,11 +104,19 @@ public class XMLConfigBuilder {
                 // 获取SQL
                 String sql = element.getText();
                 System.out.println("loadMapper解析的结果:"+id+"---"+resulteType+"---"+sql);
-            }
 
+                // 构建Mapper对象
+                Mapper mapper = new Mapper(sql, resulteType);
+                String key = namespace + "."+id;
+                //存储到Map中
+                mappers.put(key, mapper);
+            }
+            return mappers;
         } catch (DocumentException e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 
 }
