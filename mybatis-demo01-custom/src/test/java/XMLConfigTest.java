@@ -9,5 +9,6 @@ public class XMLConfigTest {
     public void parseXML() {
         InputStream is = XMLConfigTest.class.getClassLoader().getResourceAsStream("SqlMapConfig.xml");
         XMLConfigBuilder.loadConfiguration(is);
+        XMLConfigBuilder.loadMapper("cn/agree/mapper/UserMapper.xml");
     }
 }

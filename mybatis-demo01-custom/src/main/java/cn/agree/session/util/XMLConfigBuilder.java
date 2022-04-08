@@ -1,5 +1,6 @@
 package cn.agree.session.util;
 
+import cn.agree.io.Resources;
 import cn.agree.session.Configuration;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -54,8 +55,48 @@ public class XMLConfigBuilder {
             }
 
             System.out.println("组装的configuration对象:"+ cfg);
+            System.out.println("configuration对象获取的连接池:"+cfg.getConnection());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    /*
+    *  解析UserMapper.xml文件
+    *  提取SQL语句和返回JavaBean全限定名
+    *
+    * */
+    public static void loadMapper(String path) {
+        try {
+            InputStream is = Resources.getResourceAsStream(path);
+
+            // 创建SAXReader对象,加载文件字节输入流
+            SAXReader reader = new SAXReader();
+            Document document = reader.read(is);
+
+            //获取根节点
+            Element rootElement = document.getRootElement();
+
+            //获取命名空间的值
+            String namespace = rootElement.attributeValue("namespace");
+
+            //获取所有的select节点
+            List<Element> selectList = document.selectNodes("//select");
+
+            //循环所有select节点
+            for (Element element : selectList) {
+                // 获取ID属性值
+                String id = element.attributeValue("id");
+                // 获取resultType属性值
+                String resulteType = element.attributeValue("resultType");
+                // 获取SQL
+                String sql = element.getText();
+                System.out.println("loadMapper解析的结果:"+id+"---"+resulteType+"---"+sql);
+            }
+
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
