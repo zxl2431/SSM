@@ -26,20 +26,32 @@ public class MyBatisTest01 {
         SqlSessionFactory sqlSessionFactory = builder.build(is);
 
         // SqlSessionFactory构建一个SqlSession
+        /*
+        * 在openSession方法中解析的 sqlMapconfig.xml的
+        * 字节流信息
+        *
+        * 所以在DefaultSqlSession中有cfg就有了一切
+        * 在DefaultSqlSession中 的getMapper方法
+        * 使用动态代理来耍的.
+        * */
         SqlSession session = sqlSessionFactory.openSession();
+
+        System.out.println(session);
 
         // 通过SqlSession来实现增删改查
         UserMapper userMapper = session.getMapper(UserMapper.class);
-       /* List<User> users = userMapper.findAll();
 
+        List<User> users = userMapper.findAll();
         // 打印输出
         for (User user : users) {
             System.out.println(user);
         }
 
+
+
         // 关闭资源
         session.close();
-        is.close();*/
+        is.close();
 
     }
 

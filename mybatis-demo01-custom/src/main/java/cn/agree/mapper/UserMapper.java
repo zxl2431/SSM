@@ -1,6 +1,8 @@
 package cn.agree.mapper;
 
-import cn.agree.mapper.domain.User;
+
+
+import cn.agree.domain.User;
 
 import java.util.List;
 

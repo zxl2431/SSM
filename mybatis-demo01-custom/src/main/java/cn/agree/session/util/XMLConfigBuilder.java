@@ -2,6 +2,7 @@ package cn.agree.session.util;
 
 import cn.agree.io.Resources;
 import cn.agree.session.Configuration;
+import cn.agree.session.defaults.DefaultSqlSession;
 import cn.agree.session.mapper.Mapper;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -23,7 +24,7 @@ public class XMLConfigBuilder {
     *  得到property的name和value
     *  把这些值存放到Configuration对象中
     * */
-    public static void loadConfiguration(InputStream is) {
+    public static void loadConfiguration(DefaultSqlSession sqlSession, InputStream is) {
         try {
             // 数据库配置信息存储
             Configuration cfg = new Configuration();
@@ -56,8 +57,6 @@ public class XMLConfigBuilder {
             }
 
 
-            // System.out.println("configuration对象获取的连接池:"+cfg.getConnection());
-
             // 接着解析sqlMapConfig中的<mapper resource="cn/agree/mapper/UserMapper.xml"/>
             List<Element> mapperList = document.selectNodes("//mappers//mapper");
             for (Element element : mapperList) {
@@ -69,7 +68,11 @@ public class XMLConfigBuilder {
                 cfg.setMappers(mappers);
             }
 
-            System.out.println("组装的configuration对象:"+ cfg);
+            // System.out.println("---configuration对象获取的连接池:"+cfg.getConnection());
+            // System.out.println("组装的configuration对象:"+ cfg);
+
+            // 将cfg整体给DefaultSqlSession
+            sqlSession.setCfg(cfg);
 
         } catch (Exception e) {
             e.printStackTrace();
