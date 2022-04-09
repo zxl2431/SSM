@@ -78,7 +78,18 @@
                 AND username=#{user.username}
             </if>
         </where>
+    </select>
 
+    <!-- 动态SQL -->
+    <select id="findByRang" parameterType="cn.agree.domain.QueryVo" resultType="cn.agree.domain.User">
+        SELECT id, username, birthday, sex, address FROM user
+        <where>
+            <if test="ids!=null and ids.size>0">
+                <foreach collection="ids" item="id" close=")" open="AND id IN (" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
     </select>
 
     <!--resultType学习-->

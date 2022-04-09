@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,6 +55,24 @@ public class MyBatisSqlTest01 {
 
         List<User> users = userMapper.findByVo(queryVo);
 
+        for (User u : users) {
+            System.out.println(u);
+        }
+    }
+
+    @Test
+    public void testfindByRang() {
+        QueryVo queryVo = new QueryVo();
+        List<Integer> ids = new ArrayList<Integer>();
+
+        ids.add(1);
+        ids.add(2);
+        queryVo.setIds(ids);
+
+        /*
+        *  根据findByRang查询
+        * */
+        List<User> users = userMapper.findByRang(queryVo);
         for (User u : users) {
             System.out.println(u);
         }

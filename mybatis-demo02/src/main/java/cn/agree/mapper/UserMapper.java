@@ -13,11 +13,19 @@ public interface UserMapper {
     int updateUser(User user);
     int deleteUser(Integer id);
     /*
-    *  模糊查询
+    *  按username和id有就加条件
     * */
     List<User> findUserByUsername(String username);
+
+    /*
+    *  根据ID集合查询
+    *
+    * */
+    List<User> findByRang(QueryVo queryVo);
 
     List<User> findByVo(QueryVo vo);
 
     int findUserCount();
+
+
 }
