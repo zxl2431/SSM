@@ -27,5 +27,10 @@ public interface UserMapper {
 
     int findUserCount();
 
+    /*
+    *  查询用户信息,包含账户集合信息
+    *
+    * */
+    List<User> findUserAccountList();
 
 }

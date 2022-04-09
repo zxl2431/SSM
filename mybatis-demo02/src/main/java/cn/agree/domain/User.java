@@ -2,6 +2,7 @@ package cn.agree.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
     private Integer id;
@@ -9,6 +10,9 @@ public class User implements Serializable {
     private Date birthday;
     private String sex;
     private String address;
+
+    // 用于保存用于的多个账号信息
+    private List<Account> accountList;
 
     public User() {
     }
@@ -68,6 +72,14 @@ public class User implements Serializable {
         this.address = address;
     }
 
+    public List<Account> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(List<Account> accountList) {
+        this.accountList = accountList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -76,8 +88,7 @@ public class User implements Serializable {
                 ", birthday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
+                ", accountList=" + accountList +
                 '}';
     }
-
-
 }

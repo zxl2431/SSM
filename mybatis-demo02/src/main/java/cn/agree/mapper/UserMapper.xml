@@ -103,4 +103,24 @@
         SELECT count(*) FROM user;
     </select>
 
+    <!-- 一对多的学习 -->
+    <!-- userAccountsResulteMap -->
+    <resultMap id="userAccountsResultMap" type="cn.agree.domain.User">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="sex" property="sex" />
+        <result column="birthday" property="birthday" />
+        <result column="address" property="address" />
+        <!-- 一对多 -->
+        <collection property="accountList" ofType="cn.agree.domain.Account">
+            <id column="aid" property="id" />
+            <result column="auid" property="uid" />
+            <result column="amoney" property="money" />
+        </collection>
+    </resultMap>
+
+    <select id="findUserAccountList" resultMap="userAccountsResultMap">
+        SELECT u.*, acc.id aid,acc.uid auid, acc.money amoney FROM user u LEFT JOIN account1 acc ON u.id = acc.uid
+    </select>
+
 </mapper>

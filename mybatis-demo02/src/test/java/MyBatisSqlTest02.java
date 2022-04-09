@@ -1,6 +1,8 @@
 import cn.agree.domain.AccountCustomer;
 import cn.agree.domain.Acct;
+import cn.agree.domain.User;
 import cn.agree.mapper.AccountMapper;
+import cn.agree.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -16,6 +18,7 @@ public class MyBatisSqlTest02 {
 
     private SqlSession sqlSession;
     private AccountMapper accountMapper;
+    private UserMapper userMapper;
 
     @Before
     public void init() throws IOException {
@@ -25,6 +28,7 @@ public class MyBatisSqlTest02 {
         SqlSessionFactory sqlSessionFactory = builder.build(is);
         sqlSession = sqlSessionFactory.openSession();
         accountMapper = sqlSession.getMapper(AccountMapper.class);
+        userMapper = sqlSession.getMapper(UserMapper.class);
     }
 
     @Test
@@ -40,6 +44,18 @@ public class MyBatisSqlTest02 {
         List<Acct> acctList = accountMapper.findAcctList();
         for (Acct acct : acctList) {
             System.out.println(acct);
+        }
+    }
+
+    /*
+    *  一个用户多个账号
+    * */
+    @Test
+    public void testUserAccounts() {
+        List<User> userAccountList = userMapper.findUserAccountList();
+
+        for (User u : userAccountList) {
+            System.out.println(u);
         }
     }
 }
