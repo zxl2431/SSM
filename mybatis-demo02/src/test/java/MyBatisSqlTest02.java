@@ -1,4 +1,5 @@
 import cn.agree.domain.AccountCustomer;
+import cn.agree.domain.Acct;
 import cn.agree.mapper.AccountMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -31,6 +32,14 @@ public class MyBatisSqlTest02 {
         List<AccountCustomer> accountCustomers = accountMapper.findAccountList();
         for (AccountCustomer ac : accountCustomers) {
             System.out.println(ac);
+        }
+    }
+
+    @Test
+    public void testfindAcctList() {
+        List<Acct> acctList = accountMapper.findAcctList();
+        for (Acct acct : acctList) {
+            System.out.println(acct);
         }
     }
 }

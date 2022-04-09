@@ -6,9 +6,30 @@
 
 <mapper namespace="cn.agree.mapper.AccountMapper">
 
-    <!-- findAccountList -->
+    <!-- 方式一: findAccountList -->
     <select id="findAccountList" resultType="cn.agree.domain.AccountCustomer">
         select account1.*, user.username, user.address from account1, user WHERE account1.uid = user.id
+    </select>
+
+    <!-- 方式二: findAcctList -->
+    <!-- resulteMap -->
+    <resultMap id="acctMap" type="cn.agree.domain.Acct">
+        <id column="id" property="id"/>
+        <result column="uid" property="uid" />
+        <result column="money" property="money" />
+        <!--
+            一对一映射
+            association: 用于加载关联的对象
+        -->
+        <association property="user" javaType="cn.agree.domain.User">
+            <id column="id" property="id" />
+            <result column="username" property="username" />
+            <result column="address" property="address" />
+        </association>
+    </resultMap>
+
+    <select id="findAcctList" resultMap="acctMap">
+        select account1.*, user.* from account1, user WHERE account1.uid = user.id
     </select>
 
 </mapper>
