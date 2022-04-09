@@ -1,3 +1,4 @@
+import cn.agree.domain.QueryVo;
 import cn.agree.domain.User;
 import cn.agree.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
@@ -40,6 +41,22 @@ public class MyBatisSqlTest01 {
     public void saveUser() {
         User user = new User("方面", new Date(), "女","岳阳市");
         int i = userMapper.saveUser(user);
+    }
+
+    @Test
+    public void testfindByVo() {
+        User user = new User();
+        user.setId(2);
+        user.setUsername("王五");
+
+        QueryVo queryVo = new QueryVo();
+        queryVo.setUser(user);
+
+        List<User> users = userMapper.findByVo(queryVo);
+
+        for (User u : users) {
+            System.out.println(u);
+        }
     }
 
 

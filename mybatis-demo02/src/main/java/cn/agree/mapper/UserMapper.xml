@@ -56,8 +56,15 @@
         <result column="address_" property="address" />
     </resultMap>
 
-    <select id="findByVo" parameterType="cn.agree.domain.QueryVo" resultMap="cn.agree.domain.User">
-        SELECT * FROM user WHERE username = #{user.username}
+    <!--动态SQL-->
+    <select id="findByVo" parameterType="cn.agree.domain.QueryVo" resultType="cn.agree.domain.User">
+        SELECT id, username, birthday, sex, address FROM user WHERE 1 = 1
+        <if test="user.id!=null">
+            AND id=#{user.id}
+        </if>
+        <if test="user.username!=null and user.username!=''">
+            AND username=#{user.username}
+        </if>
     </select>
 
     <!--resultType学习-->

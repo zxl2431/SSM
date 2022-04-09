@@ -17,7 +17,7 @@ public interface UserMapper {
     * */
     List<User> findUserByUsername(String username);
 
-    User findByVo(QueryVo vo);
+    List<User> findByVo(QueryVo vo);
 
     int findUserCount();
 }
