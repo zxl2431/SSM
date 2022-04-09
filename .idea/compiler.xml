@@ -9,6 +9,7 @@
         <module name="dynamicProxy" />
         <module name="mybatis-demo01" />
         <module name="mybatis-demo01-custom" />
+        <module name="mybatis-demo02" />
         <module name="spring-annotation" />
         <module name="spring-aop" />
         <module name="spring-aop-annotation" />
@@ -23,6 +24,7 @@
       <module name="dynamicProxy" target="1.8" />
       <module name="mybatis-demo01" target="1.8" />
       <module name="mybatis-demo01-custom" target="1.8" />
+      <module name="mybatis-demo02" target="1.8" />
       <module name="mybatis-demo02-custom" target="1.8" />
       <module name="spring-annotation" target="1.8" />
       <module name="spring-aop" target="1.8" />
