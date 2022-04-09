@@ -66,7 +66,7 @@ public class MyBatisSqlTest01 {
         List<Integer> ids = new ArrayList<Integer>();
 
         ids.add(1);
-        ids.add(2);
+        ids.add(66);
         queryVo.setIds(ids);
 
         /*
