@@ -47,7 +47,7 @@ public class MyBatisSqlTest01 {
     public void testfindByVo() {
         User user = new User();
         user.setId(2);
-        user.setUsername("王五");
+        user.setUsername("李四");
 
         QueryVo queryVo = new QueryVo();
         queryVo.setUser(user);

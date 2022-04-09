@@ -57,7 +57,7 @@
     </resultMap>
 
     <!--动态SQL-->
-    <select id="findByVo" parameterType="cn.agree.domain.QueryVo" resultType="cn.agree.domain.User">
+ <!--   <select id="findByVo" parameterType="cn.agree.domain.QueryVo" resultType="cn.agree.domain.User">
         SELECT id, username, birthday, sex, address FROM user WHERE 1 = 1
         <if test="user.id!=null">
             AND id=#{user.id}
@@ -65,6 +65,20 @@
         <if test="user.username!=null and user.username!=''">
             AND username=#{user.username}
         </if>
+    </select>-->
+
+    <!-- 动态SQL的另外一种写法  -->
+       <select id="findByVo" parameterType="cn.agree.domain.QueryVo" resultType="cn.agree.domain.User">
+        SELECT id, username, birthday, sex, address FROM user
+        <where>
+            <if test="user.id!=null">
+                AND id=#{user.id}
+            </if>
+            <if test="user.username!=null and user.username!=''">
+                AND username=#{user.username}
+            </if>
+        </where>
+
     </select>
 
     <!--resultType学习-->
