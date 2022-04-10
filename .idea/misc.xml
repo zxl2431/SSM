@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/mybatis-demo04-jndi" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-demo01" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -21,6 +22,7 @@
         <option value="$PROJECT_DIR$/mybatis-demo04-jndi/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis-demo05-lazy/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis-demo06-annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-demo01/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
