@@ -1,7 +1,11 @@
 package cn.agree.controller;
 
+import cn.agree.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -13,9 +17,21 @@ public class UserController {
     *
     * */
     @RequestMapping(value = "/add")
-    public String addUser(int id, String name) {
-        System.out.println("id:"+id + ", name"+name);
+    public String addUser(User user) {
+        System.out.println("AGE:"+user.getAge() + ", Name:"+user.getName());
         return "success";
     }
+
+    /*
+    *  接收Map
+    *
+    * */
+    @RequestMapping(value = "/add1")
+    public String addUser(@RequestParam Map userMap) {
+        System.out.println(userMap);
+        return "success";
+    }
+
+
 
 }
