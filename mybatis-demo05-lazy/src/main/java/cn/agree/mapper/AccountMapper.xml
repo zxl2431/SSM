@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.agree.mapper.AccountMapper">
+
+    <!-- 结果映射MAP-->
+    <resultMap id="accountlayLoadUser" type="cn.agree.domain.Account">
+        <id column="id" property="id" />
+        <result column="uid" property="uid" />
+        <result column="money" property="money" />
+
+        <!--
+            一对一映射
+            如何去调用cn.agree.mapper.UserMapper.getUserById?
+        -->
+        <association property="user" column="uid" select="cn.agree.mapper.UserMapper.getUserById" />
+    </resultMap>
+
+    <!-- 根据账户ID查询账户信息 -->
+    <select id="getAccountById" parameterType="int" resultMap="accountlayLoadUser">
+        SELECT * FROM account1 WHERE id=#{id};
+    </select>
+
+</mapper>
