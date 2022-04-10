@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.agree.mapper.UserMapper">
+
+    <resultMap id="userRolesResultMap" type="cn.agree.domain.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username" />
+        <result column="birthday" property="birthday" />
+        <result column="sex" property="sex" />
+        <result column="address" property="address" />
+
+        <!--一对多-->
+        <collection property="roleList" ofType="cn.agree.domain.Role">
+            <id column="rid" property="id"/>
+            <result column="role_name" property="role_name" />
+            <result column="role_desc" property="role_desc" />
+        </collection>
+
+    </resultMap>
+
+    <select id="findUserRole" resultMap="userRolesResultMap">
+      SELECT u.*, r.`id` rid, r.`role_name` role_name, r.`role_desc` role_desc
+        FROM USER u INNER JOIN user_role ur ON (u.`id` = ur.`uid`)
+        INNER JOIN role r ON (ur.`rid` = r.`id`)
+    </select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.agree.mapper.RoleMapper">
+
+    <!-- roleUserResultMap -->
+    <resultMap id="roleUserResultMap" type="cn.agree.domain.Role">
+        <id column="id" property="id" />
+        <result column="role_name" property="role_name" />
+        <result column="role_desc" property="role_desc" />
+
+        <!--用户属性填充-->
+        <collection property="userList" ofType="cn.agree.domain.User">
+            <id column="uid" property="id" />
+            <result column="username" property="username" />
+            <result column="sex" property="sex" />
+            <result column="birthday" property="birthday" />
+            <result column="address" property="address" />
+        </collection>
+    </resultMap>
+
+    <!--
+        findRoleUserList
+        因为有2个id，为了区分，user表的id取别名uid
+     -->
+    <select id="findRoleUserList" resultMap="roleUserResultMap">
+      SELECT
+         r.*,u.id uid,
+         u.username username,
+         u.birthday birthday,
+         u.sex sex,
+         u.address address
+        FROM
+         ROLE r
+        INNER JOIN  USER_ROLE ur
+        ON ( r.id = ur.rid)
+        INNER JOIN
+         USER u
+        ON (ur.uid = u.id);
+    </select>
+
+
+</mapper>
