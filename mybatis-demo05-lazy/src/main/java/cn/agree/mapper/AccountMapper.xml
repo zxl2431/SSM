@@ -29,4 +29,9 @@
         SELECT * FROM account1
     </select>
 
+    <!-- 根据用户ID查询账户信息 -->
+    <select id="getAccountByUserId" parameterType="int" resultType="cn.agree.domain.Account">
+        SELECT * FROM account1 WHERE uid=#{id};
+    </select>
+
 </mapper>

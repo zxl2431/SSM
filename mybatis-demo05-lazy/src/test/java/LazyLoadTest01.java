@@ -53,4 +53,13 @@ public class LazyLoadTest01 {
             System.out.println(account);
         }
     }
+
+    @Test
+    public void testFindAllUser() {
+        List<User> userList = userMapper.findUserList();
+        for (User u : userList) {
+            System.out.println(u);
+        }
+
+    }
 }

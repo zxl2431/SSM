@@ -11,6 +11,12 @@ public class User implements Serializable {
     private String sex;
     private String address;
 
+    /*
+    *  一个用户可以有多个账户
+    *
+    * */
+    private List<Account> accList;
+
     public User() {
     }
 
@@ -69,6 +75,14 @@ public class User implements Serializable {
         this.address = address;
     }
 
+    public List<Account> getAccList() {
+        return accList;
+    }
+
+    public void setAccList(List<Account> accList) {
+        this.accList = accList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -77,6 +91,7 @@ public class User implements Serializable {
                 ", birthday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
+                ", accList=" + accList +
                 '}';
     }
 }

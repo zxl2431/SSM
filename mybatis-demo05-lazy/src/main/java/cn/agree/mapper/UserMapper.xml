@@ -12,4 +12,25 @@
         select * from user where id=#{id}
     </select>
 
+    <!--
+        映射
+    -->
+    <resultMap id="userLazyAccounts" type="cn.agree.domain.User">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="birthday" property="birthday" />
+        <result column="sex" property="sex" />
+        <result column="address" property="address" />
+
+        <collection property="accList" column="id" select="cn.agree.mapper.AccountMapper.getAccountByUserId" />
+    </resultMap>
+
+
+    <!--
+        查询所有用户
+    -->
+    <select id="findUserList" resultMap="userLazyAccounts">
+        select * from USER
+    </select>
+
 </mapper>
