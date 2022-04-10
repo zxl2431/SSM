@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    
+    <!--别名配置-->
+ <!--   <typeAliases>
+        <package name="cn.agree.domain" />
+    </typeAliases>-->
+    
+    <!--
+        全局配置 
+    -->
+    <settings>
+        <!--
+            开启懒加载机制
+        -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--
+            按需加载 
+                false: 表示按照用户需要加载
+                true: 一次性查所有
+        -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+    
+    <!-- 数据源配置 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/db1?characterEncoding=utf-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--
+        mapper包
+        有两种写法
+        <package name 写... />
+        <mapper resource="cn/agree/mapper/UserMapper.xml"/>
+     -->
+    <mappers>
+        <package name="cn.agree.mapper"/>
+    </mappers>
+
+</configuration>

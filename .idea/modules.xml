@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/mybatis-demo03/mybatis-demo03.iml" filepath="$PROJECT_DIR$/mybatis-demo03/mybatis-demo03.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-demo04-jndi/mybatis-demo04-jndi.iml" filepath="$PROJECT_DIR$/mybatis-demo04-jndi/mybatis-demo04-jndi.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-demo05-lazy/mybatis-demo05-lazy.iml" filepath="$PROJECT_DIR$/mybatis-demo05-lazy/mybatis-demo05-lazy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-demo06-annotation/mybatis-demo06-annotation.iml" filepath="$PROJECT_DIR$/mybatis-demo06-annotation/mybatis-demo06-annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-annotation/spring-annotation.iml" filepath="$PROJECT_DIR$/spring-annotation/spring-annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-aop/spring-aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop-annotation/spring-aop-annotation.iml" filepath="$PROJECT_DIR$/spring-aop-annotation/spring-aop-annotation.iml" />

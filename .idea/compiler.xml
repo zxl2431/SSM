@@ -13,6 +13,7 @@
         <module name="mybatis-demo03" />
         <module name="mybatis-demo04-jndi" />
         <module name="mybatis-demo05-lazy" />
+        <module name="mybatis-demo06-annotation" />
         <module name="spring-annotation" />
         <module name="spring-aop" />
         <module name="spring-aop-annotation" />
@@ -32,6 +33,7 @@
       <module name="mybatis-demo03" target="1.8" />
       <module name="mybatis-demo04-jndi" target="1.8" />
       <module name="mybatis-demo05-lazy" target="1.8" />
+      <module name="mybatis-demo06-annotation" target="1.8" />
       <module name="spring-annotation" target="1.8" />
       <module name="spring-aop" target="1.8" />
       <module name="spring-aop-annotation" target="1.8" />
