@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -29,6 +30,16 @@ public class UserController {
     @RequestMapping(value = "/add1")
     public String addUser(@RequestParam Map userMap) {
         System.out.println(userMap);
+        return "success";
+    }
+
+    /*
+    *  接收List类型的数据
+    *
+    * */
+    @RequestMapping(value = "/add2")
+    public String addUser(@RequestParam List<Integer> id) {
+        System.out.println(id);
         return "success";
     }
 
