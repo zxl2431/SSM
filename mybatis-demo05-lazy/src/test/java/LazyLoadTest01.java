@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class LazyLoadTest01 {
 
@@ -43,5 +44,13 @@ public class LazyLoadTest01 {
         System.out.println("-----------------");
         System.out.println(account.getUser());
         // System.out.println(account);
+    }
+
+    @Test
+    public void testFindAccounts() {
+        List<Account> accounts = accountMapper.findAccounts();
+        for (Account account : accounts) {
+            System.out.println(account);
+        }
     }
 }

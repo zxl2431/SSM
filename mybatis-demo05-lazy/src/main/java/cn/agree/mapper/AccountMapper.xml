@@ -24,4 +24,9 @@
         SELECT * FROM account1 WHERE id=#{id};
     </select>
 
+    <!-- 查询所有Account -->
+    <select id="findAccounts" resultMap="accountlayLoadUser">
+        SELECT * FROM account1
+    </select>
+
 </mapper>
