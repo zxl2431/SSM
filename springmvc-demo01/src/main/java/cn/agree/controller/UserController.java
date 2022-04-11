@@ -20,7 +20,7 @@ public class UserController {
     * */
     @RequestMapping(value = "/add")
     public String addUser(User user) {
-        System.out.println("AGE:"+user.getAge() + ", Name:"+user.getName());
+        System.out.println("AGE:"+user.getAge() + ", Name:"+user.getName()+",birthday:"+user.getBirthday());
         return "success";
     }
 

@@ -1,10 +1,12 @@
 package cn.agree.domain;
 
+import java.util.Date;
 import java.util.List;
 
 public class User {
     private String name;
     private String age;
+    private Date birthday;
 
     private IdCard idCard;
 
@@ -24,6 +26,14 @@ public class User {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public IdCard getIdCard() {
@@ -47,8 +57,10 @@ public class User {
         return "User{" +
                 "name='" + name + '\'' +
                 ", age='" + age + '\'' +
+                ", birthday=" + birthday +
                 ", idCard=" + idCard +
                 ", mobiles=" + mobiles +
                 '}';
     }
+
 }
