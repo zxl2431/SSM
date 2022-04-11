@@ -77,9 +77,15 @@ public class UserController {
     *  后台JavaBean
     *
     * */
+    /***
+     * @RequestBody:前台如果传的数据为JSON
+     *              处理：后台直接用对应的JavaBean接收
+     *              使用前提：提交方式为POST
+     * @return
+     */
     @RequestMapping(value = "/request/body/json")
-    public String addUser3(@RequestBody Student student) {
-        System.out.println(student.toString());
+    public String requestBodyJSON(@RequestBody Student student){
+        System.out.println(student);
         return "success";
     }
 
