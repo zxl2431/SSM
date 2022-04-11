@@ -1,10 +1,13 @@
 package cn.agree.controller;
 
 import cn.agree.domain.Mobile;
+import cn.agree.domain.Student;
 import cn.agree.domain.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
@@ -62,7 +65,32 @@ public class UserController {
     *
     *
     * */
+    @RequestMapping(value = "/add4")
+    public String addUser2(@RequestParam User user) {
+        System.out.println(user.toString());
+        return "success";
+    }
 
+    /*
+    *  解析JSON格式提交过来的数据
+    *  前台JSON
+    *  后台JavaBean
+    *
+    * */
+    @RequestMapping(value = "/request/body/json")
+    public String addUser3(@RequestBody Student student) {
+        System.out.println(student.toString());
+        return "success";
+    }
+
+    /*
+    * 前台是非JSON的数据
+    * */
+    @RequestMapping(value = "request/body/str")
+    public String requestBodyString(@RequestBody String body) {
+        System.out.println(body);
+        return "success";
+    }
 
 
 }

@@ -3,6 +3,7 @@ package cn.agree.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(path = "/say")
@@ -24,6 +25,12 @@ public class HelloController {
     @RequestMapping(value = "/yourname", method = RequestMethod.POST)
     public String sayYourName() {
         System.out.println("YourName SpringMVC!!调用了POST方法");
+        return "success";
+    }
+
+    @RequestMapping(value = "/nihao")
+    public String sayNiHao(@RequestParam(value = "username", required = false) String name) {
+        System.out.println(name);
         return "success";
     }
 
