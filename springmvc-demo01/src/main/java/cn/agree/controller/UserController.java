@@ -43,6 +43,17 @@ public class UserController {
         return "success";
     }
 
+    /*
+    *  接收user对象有个属性是IdCard
+    *
+    *
+    * */
+    @RequestMapping(value = "/add3")
+    public String addUser1(User user) {
+        System.out.println("用户:" + user.getName() + "今年:" + user.getAge() + "岁，住在:" + user.getIdCard().getAddress() + ",身份证号是:" + user.getIdCard().getNumber());
+        return "success";
+    }
+
 
 
 }
