@@ -4,10 +4,7 @@ import cn.agree.domain.Mobile;
 import cn.agree.domain.Student;
 import cn.agree.domain.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -92,11 +89,23 @@ public class UserController {
     /*
     * 前台是非JSON的数据
     * */
-    @RequestMapping(value = "request/body/str")
+    @RequestMapping(value = "/request/body/str")
     public String requestBodyString(@RequestBody String body) {
         System.out.println(body);
         return "success";
     }
+
+    /*
+    * @PathVariable注解
+    * 拥有绑定url中的占位符
+    *
+    * */
+    @RequestMapping(path = "/request/var/{id}")
+    public String requestid(@PathVariable(value = "id") String id) {
+        System.out.println(id);
+        return "success";
+    }
+
 
 
 }
