@@ -8,9 +8,19 @@ public class User {
     private String age;
     private Date birthday;
 
+    private String sex;
+
     private IdCard idCard;
 
     List<Mobile> mobiles;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
     public String getName() {
         return name;
@@ -58,9 +68,9 @@ public class User {
                 "name='" + name + '\'' +
                 ", age='" + age + '\'' +
                 ", birthday=" + birthday +
+                ", sex='" + sex + '\'' +
                 ", idCard=" + idCard +
                 ", mobiles=" + mobiles +
                 '}';
     }
-
 }

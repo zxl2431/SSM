@@ -45,13 +45,26 @@ public class UserController {
     }
 
     /*
+    *  @ModelAttribute
+    *  表示当前方法会在控制器方法执行前执行
+    *
+    * */
+    @ModelAttribute
+    public User parameterUser() {
+        System.out.println("方法执行了...");
+        User user = new User();
+
+        user.setSex("男");
+        return user;
+    }
+    /*
     *  接收user对象有个属性是IdCard
     *
     *
     * */
     @RequestMapping(value = "/add3")
     public String addUser1(User user) {
-        System.out.println("用户:" + user.getName() + "今年:" + user.getAge() + "岁，住在:" + user.getIdCard().getAddress() + ",身份证号是:" + user.getIdCard().getNumber());
+        System.out.println("用户:" + user.getName()+",性别:"+user.getSex() + ",今年:" + user.getAge() + "岁，住在:" + user.getIdCard().getAddress() + ",身份证号是:" + user.getIdCard().getNumber());
         for (Mobile mobile : user.getMobiles()) {
             System.out.println(mobile.getMobileName()+"花了"+mobile.getPrice());
         }
