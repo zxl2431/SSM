@@ -12,5 +12,7 @@
 </head>
 <body>
     <h3>入门成功</h3>
+    ${UserInfo}
+    ${requestScope}
 </body>
 </html>

@@ -47,16 +47,31 @@ public class UserController {
     /*
     *  @ModelAttribute
     *  表示当前方法会在控制器方法执行前执行
+    *  有返回值的情况
     *
     * */
-    @ModelAttribute
+   /* @ModelAttribute
     public User parameterUser() {
         System.out.println("方法执行了...");
         User user = new User();
 
         user.setSex("男");
         return user;
+    }*/
+
+
+    /*
+    * 没有返回值的情况
+    *
+    * */
+    @ModelAttribute
+    public void parameterUser(Map<String, User> userMap) {
+        User user = new User();
+        user.setSex("男");
+        userMap.put("user",user);
     }
+
+
     /*
     *  接收user对象有个属性是IdCard
     *

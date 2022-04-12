@@ -11,6 +11,6 @@
     <title>param</title>
 </head>
 <body>
-
+    <a href="${pageContext.request.contextPath}/parameters/model">model_1</a>
 </body>
 </html>

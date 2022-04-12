@@ -13,8 +13,8 @@ public class ParametersController {
     * */
     @RequestMapping(value = "/model")
     public String add(Model model) {
-        model.addAttribute("UserInfo","张三");
-        return "add_user";
+        model.addAttribute("UserInfo","小兵张嘎");
+        return "success";
     }
 
 
