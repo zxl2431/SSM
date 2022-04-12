@@ -107,5 +107,16 @@ public class UserController {
     }
 
 
+    /*
+    * @RequestHeader注解
+    * 获取请求头的值
+    * */
+    @RequestMapping(path = "/request/header")
+    public String requestHeader(@RequestHeader(value = "Accept") String header) {
+        System.out.println(header);
+        return "success";
+    }
+
+
 
 }
