@@ -30,7 +30,7 @@
     <mvc:resources mapping="/js/**" location="/js/"/>
 
     <!-- 开启对SpringMVC注解的支持 -->
-    <mvc:annotation-driven conversion-service="conversionService" />
+    <!--<mvc:annotation-driven conversion-service="conversionService" />-->
 
     <!-- 注册自定义类型转换器 -->
     <!--<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
