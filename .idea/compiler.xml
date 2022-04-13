@@ -23,6 +23,7 @@
         <module name="spring-jdbctemplate-xml" />
         <module name="spring-tx-annotation" />
         <module name="springmvc-demo01" />
+        <module name="springmvc-demo02" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -44,6 +45,7 @@
       <module name="spring-jdbctemplate-xml" target="1.8" />
       <module name="spring-tx-annotation" target="1.8" />
       <module name="springmvc-demo01" target="1.8" />
+      <module name="springmvc-demo02" target="1.8" />
       <module name="springmvc-demo1" target="1.8" />
     </bytecodeTargetLevel>
   </component>
