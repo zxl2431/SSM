@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +54,29 @@ public class UserController {
     }
 
 
+    /*
+    * 基于servletAPI的实现请求转发
+    *
+    * */
+    @RequestMapping(value = "/servlet/forward")
+    public void servletForward(HttpServletRequest request, HttpServletResponse response, Model model) throws ServletException, IOException {
+        // 将数据放入Model中
+        model.addAttribute("msg", "你长的好美");
+        // 存入Request作用域中
+        request.setAttribute("username", "小红");
+        // 转发
+        request.getRequestDispatcher("/WEB-INF/pages/add_user.jsp").forward(request, response);
+    }
+
+    /*
+    *  基于servletAPI实现重定向
+    *
+    * */
+    @RequestMapping(value = "/servlet/redirect")
+    public void servletRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 将一个数据存入到Model中
+        response.sendRedirect("http://www.baidu.com");
+    }
 
 
 }
