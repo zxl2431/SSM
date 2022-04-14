@@ -113,4 +113,33 @@ public class UserController {
 
     }
 
+    /*
+    *  基于SpringMVC实现重定向
+    *
+    * */
+    @RequestMapping(value = "/mvc/redirect")
+    public String mvcRedirect(Model model) {
+        // 讲一个数据存放到model中
+        model.addAttribute("username", "太极张三丰");
+        return "redirect:http://www.baidu.com";
+    }
+
+    /*
+    *  基于SpringMVC实现的请求转发
+    *
+    * */
+    @RequestMapping(value = "/mvc/forward")
+    public String mvcForward(Model model) {
+        //将数据存入Model中
+        model.addAttribute("msg","你长得好美！");
+
+        //存入Request作用域
+        // request.setAttribute("username","小红");
+
+        // 并不能使用视图解析器, 路径需要写全
+        return "forward:/WEB-INF/pages/add_user.jsp";
+
+    }
+
+
 }
