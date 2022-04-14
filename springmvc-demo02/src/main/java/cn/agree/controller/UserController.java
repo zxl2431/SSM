@@ -4,6 +4,7 @@ import cn.agree.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
 
 @Controller
@@ -78,5 +80,37 @@ public class UserController {
         response.sendRedirect("http://www.baidu.com");
     }
 
+    /*
+    *  返回modelandview
+    *  逻辑视图名和数据模型放到一起存储
+    *
+    * */
+    @RequestMapping(value = "/model/view")
+    public ModelAndView list() {
+        ModelAndView modelAndView = new ModelAndView();
+        // 逻辑数据
+        modelAndView.addObject("name", "小花");
+
+        User user = new User();
+        user.setUsername("张三");
+        user.setBirthday(new Date());
+
+        User user1 = new User();
+        user1.setUsername("李四");
+        user1.setBirthday(new Date());
+
+        ArrayList<User> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user);
+
+        // 将一个集合对象放到ModelAndView中
+        modelAndView.addObject("users", users);
+
+        // 封装逻辑视图名
+        modelAndView.setViewName("list_user");
+
+        return modelAndView;
+
+    }
 
 }
