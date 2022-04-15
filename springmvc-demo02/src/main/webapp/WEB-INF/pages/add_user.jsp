@@ -66,5 +66,32 @@
         <button>提交</button>
     </form>
 </div>
+
+<div>
+    <div>传统方式文件上传</div>
+    <form action="/upload/servlet/image" method="post" enctype="multipart/form-data">
+        请选择文件:<input type="file" name="file">
+        <button>上传</button>
+    </form>
+</div>
+
+    <div>
+        <div>SpringMVC文件上传</div>
+        <form action="/upload/image" method="post" enctype="multipart/form-data">
+            请选择文件：<input type="file" name="file" /><br/>
+            <button>上传</button>
+        </form>
+    </div>
+
+
+    <div>
+        <div>远程文件上传</div>
+        <form action="/upload/remote/image" method="post" enctype="multipart/form-data">
+            请选择文件：<input type="file" name="file" /><br/>
+            <button>上传</button>
+        </form>
+    </div>
+
+
 </body>
 </html>
