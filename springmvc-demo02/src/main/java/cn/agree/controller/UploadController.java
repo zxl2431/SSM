@@ -1,5 +1,7 @@
 package cn.agree.controller;
 
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -83,4 +85,31 @@ public class UploadController {
         return "add_user";
     }
 
+
+    /*
+    *  远程文件上传
+    *
+    * */
+    @RequestMapping(value = "/remote/image")
+    public String remoteUpload(MultipartFile file) throws IOException {
+        //远程文件上传路径
+        String path = "http://localhost:18082/uploads/";
+
+        //随机数
+        String newName = "No"+ (int)( Math.random()*1000 );
+
+        //获取文件真实名字
+        String realName = file.getOriginalFilename();
+        String suffix = StringUtils.getFilenameExtension(realName);
+
+        //创建远程上传的客户端对象   依赖
+        Client client = Client.create();
+
+        //创建文件资源传输对象
+        WebResource resource = client.resource(path+newName+"."+suffix);
+
+        //文件上传
+        resource.put(file.getBytes());
+        return "add_user";
+    }
 }
