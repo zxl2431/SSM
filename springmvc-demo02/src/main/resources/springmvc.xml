@@ -44,4 +44,12 @@
         </property>
     </bean>-->
 
+    <!--
+        文件上传解析器
+    -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="maxUploadSize" value="10000000" />
+    </bean>
+
 </beans>

@@ -7,11 +7,13 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,6 +27,8 @@ public class UploadController {
         // 获取images的目录路径
         String realPath = session.getServletContext().getRealPath("/images");
         String randName = UUID.randomUUID().toString().replace("-","");
+
+        System.out.println("传统servlet的文件上传方式...");
 
         // 文件上传磁盘处理的工程对象
         // 1G文件 ---> 加载到内存 --->超过10M ---> 将文件切割存放到临时文件夹中
@@ -56,5 +60,27 @@ public class UploadController {
 
     }
 
+
+    /*
+    *  MultipartFile: 表示接受前台传过来的文件包装对象
+    *
+    * */
+    @RequestMapping(value = "/image")
+    public String upload(MultipartFile file, HttpSession session) throws IOException {
+        System.out.println("SpringMVC的方式上传文件...");
+        // 获取images的目录路径
+        String realPath = session.getServletContext().getRealPath("/images");
+        // 获取文件的真实名称
+        String fileRealName = file.getOriginalFilename();
+        // UUID
+        String randName = UUID.randomUUID().toString().replace("-", "");
+        // 获取文件后缀
+        String suffix = StringUtils.getFilenameExtension(fileRealName);
+
+        // 文件上传
+        file.transferTo(new File(realPath+"/"+randName+"."+suffix));
+
+        return "add_user";
+    }
 
 }
