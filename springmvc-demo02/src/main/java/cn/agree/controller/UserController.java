@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
@@ -169,6 +170,26 @@ public class UserController {
     public String requestBodyJSON(@RequestBody User user){
         System.out.println(user);
         return "add_user";
+    }
+
+
+    /*
+    *  @ResponseBody: 只需要在方法上加该注解,则会响应JSON格式数据
+    *               如果是一个JavaBean,则响应JSON格式
+    *               如果是基本数据类型或者String,则直接响应文本
+    *
+    * */
+    @ResponseBody
+    @RequestMapping(value = "/response/body/json")
+    public User jsonResponse() {
+        //User对象创建
+        User user = new User();
+        user.setUsername("毛毛虫");
+        user.setMoney(199);
+        user.setBirthday(new Date());
+        user.setPassword("123");
+
+        return user;
     }
 
 

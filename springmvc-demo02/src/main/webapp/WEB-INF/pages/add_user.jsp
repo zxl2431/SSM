@@ -36,7 +36,7 @@
                     success:function (data) {
                         //控制台输出
                         console.log(data);
-                        alert(data.username+"----"+data.telephone);
+                        alert(data.username+"----"+data.password);
                     }
                 });
             });
@@ -48,6 +48,7 @@
 <body>
     ${username}欢迎使用SpringMVC! <br/>
     ${msg}
+    <hr/>
 
 <div>
     获取JSON数据
