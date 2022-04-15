@@ -3,6 +3,7 @@ package cn.agree.controller;
 import cn.agree.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +19,11 @@ import java.util.Date;
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
+
+    @RequestMapping(value = "/add/adduser")
+    public String addUser() {
+        return "add_user";
+    }
 
     @RequestMapping(value = "/initUpdate")
     public String initUpdate(Model model) {
@@ -140,6 +146,31 @@ public class UserController {
         return "forward:/WEB-INF/pages/add_user.jsp";
 
     }
+
+    /*
+    *  @RequestBody: 前台如果传的数据是非JSON
+    *               处理 username=小红&userbirthday=
+    *               使用前提:POST
+    *
+    * */
+    @RequestMapping(value = "/request/body/str")
+    public String requestBodyString(@RequestBody String body){
+        System.out.println(body);
+        return "add_user";
+    }
+
+    /***
+     * @RequestBody:前台如果传的数据为JSON
+     *              处理：后台直接用对应的JavaBean接收
+     *              使用前提：提交方式为POST
+     * @return
+     */
+    @RequestMapping(value = "/request/body/json")
+    public String requestBodyJSON(@RequestBody User user){
+        System.out.println(user);
+        return "add_user";
+    }
+
 
 
 }
