@@ -192,6 +192,10 @@ public class UserController {
         return user;
     }
 
-
+    @RequestMapping(value = "/hello")
+    public String userHello() {
+        System.out.println("userHello执行成功");
+        return "success";
+    }
 
 }

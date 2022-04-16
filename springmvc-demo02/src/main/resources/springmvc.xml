@@ -52,4 +52,33 @@
         <property name="maxUploadSize" value="10000000" />
     </bean>
 
+    <!--
+        全局异常处理
+    -->
+    <bean class="cn.agree.exception.ExceptionHandler" />
+
+    <!--
+        拦截器拦截栈
+    -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--
+                指定拦截的路径
+            -->
+            <mvc:mapping path="/user/response/body/json"/>
+            <!-- 指定被拦截的路径交给指定拦截器处理 -->
+            <bean class="cn.agree.interceptor.LoginInterceptor" />
+        </mvc:interceptor>
+
+        <!--配置第二个拦截器-->
+        <mvc:interceptor>
+            <!--
+                path="/user/**": 指定拦截的路径 2颗*表示当前路径所有下级(无线下级)
+                path="/user/*": 表示当前路径下以级
+            -->
+            <mvc:mapping path="/user/**"/>
+            <bean class="cn.agree.interceptor.LoginInterceptor2" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

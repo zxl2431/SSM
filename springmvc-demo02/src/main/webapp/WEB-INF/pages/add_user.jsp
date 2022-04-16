@@ -67,6 +67,10 @@
     </form>
 </div>
 
+    <hr/>
+
+    <a href="/user/hello">springmvc拦截器测试</a>
+
 <div>
     <div>传统方式文件上传</div>
     <form action="/upload/servlet/image" method="post" enctype="multipart/form-data">
