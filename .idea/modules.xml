@@ -20,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-tx-annotation/spring-tx-annotation.iml" filepath="$PROJECT_DIR$/spring-tx-annotation/spring-tx-annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc-demo01/springmvc-demo01.iml" filepath="$PROJECT_DIR$/springmvc-demo01/springmvc-demo01.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc-demo02/springmvc-demo02.iml" filepath="$PROJECT_DIR$/springmvc-demo02/springmvc-demo02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm-demo01/ssm-demo01.iml" filepath="$PROJECT_DIR$/ssm-demo01/ssm-demo01.iml" />
     </modules>
   </component>
 </project>

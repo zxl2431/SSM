@@ -24,6 +24,7 @@
         <module name="spring-tx-annotation" />
         <module name="springmvc-demo01" />
         <module name="springmvc-demo02" />
+        <module name="ssm-demo01" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -47,6 +48,7 @@
       <module name="springmvc-demo01" target="1.8" />
       <module name="springmvc-demo02" target="1.8" />
       <module name="springmvc-demo1" target="1.8" />
+      <module name="ssm-demo01" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
