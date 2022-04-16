@@ -20,7 +20,7 @@ public class LoginInterceptor2 implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("-----------------preHandler --------------------------------BBB");
+        System.out.println("-----------------postHandler --------------------------------BBB");
     }
 
     @Override
