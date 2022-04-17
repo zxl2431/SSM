@@ -16,6 +16,7 @@
       <configuration>
         <fileset id="fileset" name="Spring" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/springmvc.xml</file>
         </fileset>
       </configuration>
     </facet>
