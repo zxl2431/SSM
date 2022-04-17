@@ -4,7 +4,12 @@
 <h2>Hello World!</h2>
 
 <a href="/account/findAll">查询所有</a>
-<a href="/account/add">添加账户</a>
+
+<form action="/account/add" method="post">
+    姓名：<input type="text" name="name"/><br/>
+    金额：<input type="text" name="money"/><br/>
+    <input type="submit" value="保存"/><br/>
+</form>
 
 </body>
 </html>
